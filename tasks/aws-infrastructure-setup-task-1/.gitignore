@@ -1,0 +1,5 @@
+*.tfstate
+*.tfvars
+*.terraform*
+key-for-mate-task.pem
+tfplan
