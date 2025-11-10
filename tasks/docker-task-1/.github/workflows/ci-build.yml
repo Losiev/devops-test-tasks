@@ -4,13 +4,13 @@ run-name: ${{ github.action }} - ${{ github.ref_name }}
 
 on:
   push:
-    branches: ["develop"]
+    branches: ["develop/docker-task-1"]
 
 env:
   PythonVersion: 3.10
 
 jobs:
-  python-ci:
+  build-test:
     runs-on: ubuntu-latest
 
     steps:
@@ -33,13 +33,15 @@ jobs:
         run: |
           flake8 . --show-source --statistics
 
+      - name: Build Docker-image
+        uses: docker/build-push-action@v4
+        with:
+          context: .
+          file: Dockerfile
+          push: false
+
       - name: Upload python artifacts
         uses: actions/upload-artifact@v4
         with:
           name: python-artifacts
           path: .
-
-
-
-
-
