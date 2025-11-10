@@ -10,7 +10,7 @@ on:
       - '.github/workflows/ci-docker-task-1.yml'
 
 env:
-  PythonVersion: 3.10
+  PythonVersion: '3.10'
 
 jobs:
   build-test:
@@ -20,7 +20,7 @@ jobs:
       - name: Check out repository code
         uses: actions/checkout@v4
 
-      - name: Set up Pyhton ${{ env.PythonVersion }} and enable pip cache
+      - name: Set up Python ${{ env.PythonVersion }} and enable pip cache
         uses: actions/setup-python@v5
         with:
           python-version: ${{ env.PythonVersion }}
