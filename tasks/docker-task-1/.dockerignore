@@ -10,3 +10,4 @@ Dockerfile
 docker-compose.yml
 *.log
 tests/
+.flake8

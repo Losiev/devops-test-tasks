@@ -1,13 +1,16 @@
 from flask import Flask
 app = Flask(__name__)
 
-@app.route("/")
+
+@app.route('/')
 def hello():
-    return "Hello, DevOps with Gunicorn!"
+    return 'Hello, DevOps with Gunicorn!'
 
-@app.route("/health")
+
+@app.route('/health')
 def health():
-    return "OK", 200   
+    return 'OK', 200
 
-if __name__ == "__main__":
+
+if __name__ == '__main__':
     app.run()
