@@ -1,6 +1,6 @@
 name: Python application
 
-run-name: ${{ github.action }} - ${{ github.ref_name }}
+run-name: ${{ github.actor }} - ${{ github.ref_name }}
 
 on:
   push:
@@ -34,17 +34,17 @@ jobs:
 
       - name: Lint with flake8
         run: |
-          flake8 ./tasks/docker-task-1 --show-source --statistics
+          flake8 tasks/docker-task-1 --show-source --statistics
 
       - name: Build Docker-image
         uses: docker/build-push-action@v4
         with:
           context: ./tasks/docker-task-1
-          file: ./tasks/docker-task-1/Dockerfile
+          file: tasks/docker-task-1/Dockerfile
           push: false
 
       - name: Upload python artifacts
         uses: actions/upload-artifact@v4
         with:
           name: python-artifacts
-          path: tasks/docker-task-1/artifacts/
+          path: tasks/docker-task-1
