@@ -34,12 +34,12 @@ jobs:
 
       - name: Lint with flake8
         run: |
-          flake8 . --show-source --statistics
+          flake8 ./tasks/docker-task-1 --show-source --statistics
 
       - name: Build Docker-image
         uses: docker/build-push-action@v4
         with:
-          context: .
+          context: ./tasks/docker-task-1
           file: Dockerfile
           push: false
 
@@ -47,4 +47,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: python-artifacts
-          path: .
+          path: tasks/docker-task-1/artifacts/
