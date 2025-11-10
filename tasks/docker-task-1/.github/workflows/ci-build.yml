@@ -39,9 +39,3 @@ jobs:
           context: .
           file: Dockerfile
           push: false
-
-      - name: Upload python artifacts
-        uses: actions/upload-artifact@v4
-        with:
-          name: python-artifacts
-          path: .
