@@ -40,7 +40,7 @@ jobs:
         uses: docker/build-push-action@v4
         with:
           context: ./tasks/docker-task-1
-          file: Dockerfile
+          file: ./tasks/docker-task-1/Dockerfile
           push: false
 
       - name: Upload python artifacts
