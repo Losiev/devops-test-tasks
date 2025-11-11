@@ -51,7 +51,6 @@ jobs:
           push: false
 
       - name: Upload python artifacts
-        if: ${{ github.ref_name == 'main' }}
         uses: actions/upload-artifact@v4
         with:
           name: python-artifacts
@@ -59,7 +58,7 @@ jobs:
   deploy:
     needs: build-test
     runs-on: ubuntu-latest
-    if: ${{ github.ref_name == 'main' }}
+    if: ${{ github.event_name == 'pull_request' && github.base_ref == 'main' }}
 
     steps:
       - name: Download python artifacts
