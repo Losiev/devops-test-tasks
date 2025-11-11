@@ -1,0 +1,10 @@
+services:
+  web:
+    build:
+      context: .
+    ports:
+      - 8080:8000
+    volumes:
+      - mydata:/app/data
+volumes:
+  mydata:
