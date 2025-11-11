@@ -7,13 +7,13 @@ on:
     branches: ["develop/docker-task-1"]
     paths:
       - 'tasks/docker-task-1/**'
-      - '.github/workflows/ci-docker-task-1.yml'
+      - '.github/workflows/ci-cd-docker-task-1.yml'
   pull_request:
     branches:
       - 'main'
     paths:
       - 'tasks/docker-task-1/**'
-      - '.github/workflows/ci-docker-task-1.yml'
+      - '.github/workflows/ci-cd-docker-task-1.yml'
 
 env:
   PYTHON_VERSION: '3.10'
@@ -76,5 +76,7 @@ jobs:
       - name: Build and Push Docker-image
         uses: docker/build-push-action@v5
         with:
+          context: ./tasks/docker-task-1
+          file: tasks/docker-task-1/Dockerfile
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/${{ env.DOCKER_IMAGE_NAME }}:${{ github.sha }}
